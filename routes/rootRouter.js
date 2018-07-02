@@ -37,7 +37,7 @@ const rootRoutes = function(Team) {
       let dataToSave = formatData(req.body);
       Team.insertMany(dataToSave, function(err, results) {
         if(err) return next(err);
-        else res.status(200).json('Data uploaded succesfully.');
+        else res.status(201).json('Data uploaded succesfully.');
       });
     });
 
