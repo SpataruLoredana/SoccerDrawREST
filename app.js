@@ -12,6 +12,10 @@ const Team = require('./models/teamModel');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// use body parser middleware
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
 // routers
 const apiRouter = require('./routes/apiRouter')(Team);
 const rootRouter = require('./routes/rootRouter')(Team);
@@ -19,9 +23,7 @@ const rootRouter = require('./routes/rootRouter')(Team);
 app.use('/', rootRouter);
 app.use('/api', apiRouter);
 
-// use body parser middleware
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
+
 
 // error handler
 app.use( function(err, req, res, next) {

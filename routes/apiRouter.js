@@ -45,7 +45,7 @@ const apiRoutes = function(Team) {
   // parameter handler to preload doc and handle errors for :teamName
   apiRouter.param("teamName", function(req, res, next, name) {
     let formatedName = formatName(name);
-    Team.findOne({name: formatedName}, {'_id': 0, 'name': 1, 'group': 1, 'pot': 1 }, function(err, team) {
+    Team.findOne({name: formatedName}, function(err, team) {
       if(err) return next(err);
       else if(!team) {
         err = new Error("Not Found");
@@ -116,7 +116,9 @@ const apiRoutes = function(Team) {
       res.status(200).json(req.team);
     })
     .put(function(req, res, next) {
-      Team.findByIdAndUpdate(req.team._id, req.body, {new: true}, function(err, result) {
+      // allow updates only on name and pot fields
+      let updates = {name: req.body.name || req.team.name, pot: req.body.pot  || req.team.pot};
+      Team.findByIdAndUpdate(req.team._id, updates, {new: true}, function(err, result) {
         if(err) return next(err);
         else res.status(201).json(result);
       });
@@ -124,9 +126,9 @@ const apiRoutes = function(Team) {
     .delete(function(req, res, next) {
       Team.findByIdAndDelete(req.team._id, function(err, result) {
         if(err) return next(err);
-        else res.status(204);
+        else res.status(204).json('Team deleted.');
+      });
     });
-  });
 
   apiRouter.route('/groups')
     .get(function(req, res) {

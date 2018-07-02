@@ -25,22 +25,21 @@ const rootRoutes = function(Team) {
   const rootRouter = express.Router();
 
   rootRouter.route('/upload')
-    .post(function(req, res, next) {
-        // Clean up database
-        Team.remove().exec();
+    .post(function(req, res, next){
+      // clean up database
+      Team.remove().exec();
 
-        if (_.isEmpty(req.body)) {
-          err = new Error('No files were uploaded.');
-          err.status = 400;
-          return next(err);
-        } else {
-          let dataToSave = formatData(req.body);
-          Team.insertMany(dataToSave, function(err, results) {
-            if(err) return next(err);
-            else res.status(201).json("Data uploaded successfully.");
-          });
-        }        
+      if (_.isEmpty(req.body)) {
+        err = new Error('No files were uploaded.');
+        err.status = 400;
+        return next(err);
+      }
+      let dataToSave = formatData(req.body);
+      Team.insertMany(dataToSave, function(err, results) {
+        if(err) return next(err);
+        else res.status(200).json('Data uploaded succesfully.');
       });
+    });
 
 return rootRouter;
 
