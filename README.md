@@ -1,10 +1,8 @@
 # Soccer Draw REST API #
-============================================
 
-* A REST app where users can upload a json file and simulate a World Cup competition draw *
+* REST API app where users can upload a json file, simulate a World Cup competition draw and query data. *
 
 ## Routes ##
-============================================
 
 * /upload
   * POST
