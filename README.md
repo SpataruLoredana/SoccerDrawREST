@@ -1,6 +1,7 @@
 # Soccer Draw REST API #
 
-* REST API app where users can upload a json file, simulate a World Cup competition draw and query data. *
+* REST API app where users can upload a json file, simulate a World Cup competition draw and query data.
+![AngularJS FrontEnd](https://github.com/SpataruLoredana/SoccerDrawREST/blob/master/UI/img/icon.png)
 
 ## Routes ##
 
@@ -149,3 +150,7 @@
     - accepts parameter :potName with values P1, P2, P3 , P4 for each initial pot (case insensitive)
     - success: 200, returns json with the teams in the pot provided as parameter
     - error: 404, parameter doesn't match any of the pots
+
+### To do ###
+- [ ] Finish the AngularJS app that consumes the API
+- [ ] Tests for the REST API
