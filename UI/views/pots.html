@@ -1,0 +1,18 @@
+<div class="container">
+    <img src="./img/soccer.png">
+    <h1>FIFA World Cup seeding</h1>
+    <img src="./img/soccer.png">
+    <button class="main-btn">Trigger draw</button>
+    <h2>Pots</h2>
+    <div class="row">
+      <div class="three columns box" ng-repeat="pot in pots">
+        {{pot[0].pot}}
+        <ul class="team-box">
+          <li class="team" ng-repeat="team in pot">{{team.name}}
+            <button class="req-btn u-pull-right">Update</button>
+            <button class="req-btn u-pull-right" ng-click="DeleteTeam(team, $index)">Delete</button>
+          </li>
+        </ul>
+      </div>
+  </div>
+</div>

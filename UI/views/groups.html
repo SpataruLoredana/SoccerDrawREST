@@ -1,0 +1,15 @@
+<div class="container">
+    <img src="./img/soccer.png">
+    <h1>FIFA World Cup seeding</h1>
+    <img src="./img/soccer.png">
+    <h2>Groups</h2>
+    <div class="wrapper">
+      <div class="box" ng-repeat="group in groups">
+        {{group[0].group}}
+        <ul class="team-box">
+          <li class="team" ng-repeat="team in group">{{team.name}}
+          </li>
+        </ul>
+      </div>
+  </div>
+</div>

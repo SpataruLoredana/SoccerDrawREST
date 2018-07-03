@@ -1,0 +1,17 @@
+<div class="container">
+    <img src="./img/soccer.png">
+    <h1>FIFA World Cup seeding</h1>
+    <img src="./img/soccer.png">
+    <h2>Please upload data.</h2>
+    <div class="row">
+      <form ref='uploadForm'
+          id='uploadForm'
+          action='http://localhost:3000/upload'
+          method='post'
+          encType="multipart/form-data">
+            <input type="file" name="jsonInput"/>
+            <input type='submit' value='Upload!' />
+        </form>
+        <button ng-click="sendLocation()">click</button>
+  </div>
+</div>
