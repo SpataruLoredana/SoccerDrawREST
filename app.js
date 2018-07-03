@@ -16,13 +16,6 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-// routers
-const apiRouter = require('./routes/apiRouter')(Team);
-const rootRouter = require('./routes/rootRouter')(Team);
-
-app.use('/', rootRouter);
-app.use('/api', apiRouter);
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
@@ -32,6 +25,15 @@ app.use(function(req, res, next) {
   }
   next();
 });
+
+// routers
+const apiRouter = require('./routes/apiRouter')(Team);
+const rootRouter = require('./routes/rootRouter')(Team);
+
+app.use('/', rootRouter);
+app.use('/api', apiRouter);
+
+
 
 // error handler
 app.use( function(err, req, res, next) {
